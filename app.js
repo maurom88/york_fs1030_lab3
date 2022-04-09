@@ -15,7 +15,7 @@ const db = mysql.createConnection ({
     host: 'localhost',
     user: 'nodeclient',
     password: '123456',
-    database: 'socka'
+    database: 'job_board'
 });
 
 // connect to database
