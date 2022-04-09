@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const path = require('path');
 const app = express();
 
-const {getAllJobs} = require('./routes/index');
+const {getAllJobs} = require('./routes/jobs');
 const {addPlayer, deletePlayer, editPlayer} = require('./routes/player');
 const port = 5000;
 
