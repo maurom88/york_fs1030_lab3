@@ -6,6 +6,7 @@ Based on:
 
 - Atauba Prince: https://dev.to/achowba/build-a-simple-app-using-node-js-and-mysql-19me
 - Tarun Sharma: https://github.com/tarun27in/FS1030
+- Geshan Manandhar: https://blog.logrocket.com/build-rest-api-node-express-mysql
 
 ## Project setup
 

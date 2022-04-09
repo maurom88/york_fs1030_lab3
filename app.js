@@ -1,48 +1,74 @@
-const express = require('express');
-const fileUpload = require('express-fileupload');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const path = require('path');
+const express = require("express");
+const fileUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
+const mysql = require("mysql");
+const path = require("path");
 const app = express();
 
-const {getAllJobs} = require('./routes/jobs');
-const {addPlayer, deletePlayer, editPlayer} = require('./routes/player');
+const {
+  getAllJobs,
+  getJob,
+  addJob,
+  editJob,
+  deleteJob,
+} = require("./routes/jobs");
+const { addPlayer, deletePlayer, editPlayer } = require("./routes/player");
 const port = 5000;
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'nodeclient',
-    password: '123456',
-    database: 'job_board'
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "nodeclient",
+  password: "123456",
+  database: "job_board",
 });
 
 // connect to database
 db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
+  if (err) throw err;
+  console.log("Connected to database");
 });
 global.db = db;
 
 // configure middleware
-app.set('port', process.env.port || port); // set express to use this port
+app.set("port", process.env.port || port); // set express to use this port
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
-app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
+app.use(express.static(path.join(__dirname, "public"))); // configure express to use public folder
 app.use(fileUpload()); // configure fileupload
 
-// routes for the app
+// routes for jobs
 
-app.get('/jobs', getAllJobs);
-app.get('/delete/:id', deletePlayer);
-app.post('/add', addPlayer);
-app.post('/edit/:id', editPlayer);
+app.get("/jobs", getAllJobs);
+app.get("/jobs/:id", (req, res) => {
+  getJob(req, res);
+});
+app.post("/jobs/new", (req, res) => {
+  addJob(req.body, res);
+});
+app.put("/jobs/:id", (req, res) => {
+  editJob(req, res);
+});
+app.delete("/jobs/:id", (req, res) => {
+  deleteJob(req, res);
+});
 
+// routes for job seekers
+
+app.get("/delete/:id", deletePlayer);
+app.post("/add", addPlayer);
+app.post("/edit/:id", editPlayer);
+
+/* Error handler middleware */
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  console.error(err.message, err.stack);
+  res.status(statusCode).json({ message: err.message });
+  return;
+});
 
 // set the app to listen on the port
 app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
+  console.log(`Server running on port: ${port}`);
 });
