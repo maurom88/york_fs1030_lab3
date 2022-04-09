@@ -12,7 +12,12 @@ const {
   editJob,
   deleteJob,
 } = require("./routes/jobs");
-const { addPlayer, deletePlayer, editPlayer } = require("./routes/player");
+const {
+  getJobSeeker,
+  addJobSeeker,
+  editJobSeeker,
+  deleteJobSeeker,
+} = require("./routes/player");
 const port = 5000;
 
 // create connection to database
@@ -56,9 +61,10 @@ app.delete("/jobs/:id", (req, res) => {
 
 // routes for job seekers
 
-app.get("/delete/:id", deletePlayer);
-app.post("/add", addPlayer);
-app.post("/edit/:id", editPlayer);
+app.get("/job_seeker/:id", getJobSeeker);
+app.post("/job_seeker", addJobSeeker);
+app.put("/edit/:id", editJobSeeker);
+app.delete("/delete/:id", deleteJobSeeker);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
