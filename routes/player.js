@@ -1,12 +1,6 @@
 const fs = require('fs');
 
 module.exports = {
-    addPlayerPage: (req, res) => {
-        res.render('add-player.ejs', {
-            title: "Welcome to Socka | Add a new player"
-            ,message: ''
-        });
-    },
     addPlayer: (req, res) => {
         if (!req.files) {
             return res.status(400).send("No files were uploaded.");
@@ -31,10 +25,7 @@ module.exports = {
             }
             if (result.length > 0) {
                 message = 'Username already exists';
-                res.render('add-player.ejs', {
-                    message,
-                    title: "Welcome to Socka | Add a new player"
-                });
+                res.send(message)
             } else {
                 // check the filetype before uploading it
                 if (uploadedFile.mimetype === 'image/png' || uploadedFile.mimetype === 'image/jpeg' || uploadedFile.mimetype === 'image/gif') {
@@ -55,10 +46,7 @@ module.exports = {
                     });
                 } else {
                     message = "Invalid File format. Only 'gif', 'jpeg' and 'png' images are allowed.";
-                    res.render('add-player.ejs', {
-                        message,
-                        title: "Welcome to Socka | Add a new player"
-                    });
+                    res.send(message)
                 }
             }
         });

@@ -1,10 +1,12 @@
 {
-  "name": "fs1030",
+  "name": "lab3_api",
   "version": "1.0.0",
-  "description": "NodeJS-ExpressJS-MYSQL Example",
+  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +20,10 @@
   "homepage": "https://github.com/tarun27in/FS1030#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "ejs": "^3.0.2",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.7-alpha.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.2",
+    "nodemon": "^2.0.15",
     "req-flash": "0.0.3"
   },
   "directories": {
