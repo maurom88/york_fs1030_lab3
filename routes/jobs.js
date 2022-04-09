@@ -1,8 +1,8 @@
-async function getAllJobs(req, res) {
+function getAllJobs(req, res) {
   let query = `select * from job_ads order by published_at desc;`;
 
   // execute query
-  await db.query(query, (err, result) => {
+  db.query(query, (err, result) => {
     if (err) res.send(err);
     res.send(result);
   });
@@ -20,7 +20,7 @@ function getJob(req, res) {
   });
 }
 
-async function addJob(newJob, res) {
+function addJob(newJob, res) {
   let query = `INSERT INTO job_ads
       (expires_at, start_date, company_id, job_id, title, \`description\`, location, hourly_pay, yearly_salary)
       VALUES
@@ -39,7 +39,7 @@ async function addJob(newJob, res) {
   } = newJob;
 
   // execute query
-  await db.query(
+  db.query(
     query,
     [
       expires_at,
@@ -59,7 +59,7 @@ async function addJob(newJob, res) {
   );
 }
 
-async function editJob(job, res) {
+function editJob(job, res) {
   let query = `update job_ads
     set
       expires_at = ?,
@@ -87,7 +87,7 @@ async function editJob(job, res) {
 
   let { id } = job.params;
 
-  await db.query(
+  db.query(
     query,
     [
       expires_at,
@@ -108,12 +108,12 @@ async function editJob(job, res) {
   );
 }
 
-async function deleteJob(req, res) {
+function deleteJob(req, res) {
   let query = `delete from job_ads where id = ?`;
 
   let id = req.params.id;
 
-  await db.query(query, id, (err, result) => {
+db.query(query, id, (err, result) => {
     if (err) res.status(500).end(err);
     else res.send(result);
   });
