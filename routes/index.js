@@ -1,4 +1,4 @@
-function getHomePage(req, res) {
+function getAllJobs(req, res) {
   let query = "select * from job_ads order by published_at desc;";
 
   // execute query
@@ -11,5 +11,5 @@ function getHomePage(req, res) {
 }
 
 module.exports = {
-  getHomePage,
+    getAllJobs,
 };
