@@ -17,7 +17,7 @@ const {
   addJobSeeker,
   editJobSeeker,
   deleteJobSeeker,
-} = require("./routes/player");
+} = require("./routes/job_seekers");
 const port = 5000;
 
 // create connection to database
