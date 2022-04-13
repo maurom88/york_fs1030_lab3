@@ -1,8 +1,51 @@
-function getJobSeeker(req, res) {}
+function getJobSeeker(req, res) {
+  let query = `select * from job_seekers where id = ?`;
 
-function addJobSeeker(req, res) {}
+  let id = req.params.id;
 
-function editJobSeeker(req, res) {}
+  db.query(query, id, (err, result) => {
+    if (err) res.status(500).send(err);
+    if (!result[0]) res.send("Job seeker bot found");
+    else console.log(result);
+  });
+}
+
+function addJobSeeker(req, res) {
+  let query = `INSERT INTO job_seekers (first_name, last_name, date_of_birth, email) VALUES
+  (?, ?, ?, ?)`;
+
+  let { first_name, last_name, date_of_birth, email } = req.body;
+
+  db.query(
+    query,
+    [first_name, last_name, date_of_birth, email],
+    (err, result) => {
+      if (err) res.status(500).send(err);
+      else res.send(result);
+    }
+  );
+}
+
+function editJobSeeker(req, res) {
+  let query = `update job_seekers
+    set
+      first_name = ?,
+      last_name = ?,
+      date_of_birth = ?,
+      email = ?
+    where id = ?;`;
+
+    let id = req.params.id;
+
+    let {first_name, last_name, date_of_birth, email} = req.body
+    
+    db.query(query, [first_name, last_name, date_of_birth, email, id], (err, result) => {
+      if (err) res.status(500).end(err);
+      else res.send(result);
+      console.log(result)
+    })
+
+}
 
 function deleteJobSeeker(req, res) {}
 

@@ -61,10 +61,16 @@ app.delete("/jobs/:id", (req, res) => {
 
 // routes for job seekers
 
-app.get("/job_seeker/:id", getJobSeeker);
-app.post("/job_seeker", addJobSeeker);
-app.put("/edit/:id", editJobSeeker);
-app.delete("/delete/:id", deleteJobSeeker);
+app.get("/job_seeker/:id", (req, res) => {
+  getJobSeeker(req, res)
+});
+app.post("/job_seeker", (req, res) => {
+  addJobSeeker(req, res)
+});
+app.put("/job_seeker/:id", (req, res) => {
+  editJobSeeker(req, res)
+});
+app.delete("/job_seeker/:id", deleteJobSeeker);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
