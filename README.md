@@ -116,8 +116,6 @@ INSERT INTO applications (job_seeker_id, job_ad_id) VALUES
  
 select * from applications;
 
--- drop database job_board;
-
  commit;
 ```
 
