@@ -56,8 +56,6 @@ INSERT INTO job_seekers (first_name, last_name, date_of_birth, email) VALUES
  ('Toad', '', '1900-01-05', 'toad@email.com'),
  ('Yoshi', '', '1900-01-01', 'yoshi@email.com');
  
- select * from job_seekers;
- 
  CREATE TABLE `job_ads` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `published_at` DATETIME NOT NULL DEFAULT (CURRENT_TIMESTAMP),
@@ -75,16 +73,12 @@ INSERT INTO job_seekers (first_name, last_name, date_of_birth, email) VALUES
   -- FOREIGN KEY (job_id) REFERENCES jobs (id)
 );
 
-describe job_ads;
-
 INSERT INTO job_ads (expires_at, start_date, company_id, job_id, title, `description`, location, hourly_pay, yearly_salary) VALUES
  ('2022-03-30', '2022-04-30', 1, 1, 'Customer support associate', 'Customer support associate job description at company 1', 'Remote Canada', NULL, '40000'),
  ('2022-03-30', '2022-04-30', 1, 2, 'Customer support associate', 'Customer support associate job description at company 1', 'Remote USA', NULL, '50000'),
  ('2022-04-30', '2022-04-30', 2, 1, 'Junior web developer', 'Junior web dev job description for company 2', 'Remote Canada', NULL, '60000'),
  ('2022-03-30', '2022-04-30', 2, 2, 'Senior web developer', 'Senior web dev job description for company 2', 'Remote Canada', NULL, '90000'),
  ('2022-03-30', '2022-04-30', 3, 1, 'Customer support associate', 'Customer support associate job description at company 1', 'Remote USA', NULL, '45000');
-
-select * from job_ads;
 
 CREATE TABLE `applications` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -95,10 +89,6 @@ CREATE TABLE `applications` (
   FOREIGN KEY (job_seeker_id) REFERENCES job_seekers (id) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (job_ad_id) REFERENCES job_ads (id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
-
-select * from job_seekers;
-select * from job_ads;
-select * from applications;
 
 INSERT INTO applications (job_seeker_id, job_ad_id) VALUES
  (1, 1),
@@ -113,8 +103,6 @@ INSERT INTO applications (job_seeker_id, job_ad_id) VALUES
  (4, 3),
  (4, 5),
  (5, 5);
- 
-select * from applications;
 
  commit;
 ```
