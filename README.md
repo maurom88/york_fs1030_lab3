@@ -59,8 +59,8 @@ INSERT INTO job_seekers (first_name, last_name, date_of_birth, email) VALUES
  CREATE TABLE `job_ads` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `published_at` DATETIME NOT NULL DEFAULT (CURRENT_TIMESTAMP),
-  `expires_at` DATE NOT NULL,
-  `start_date` DATE NOT NULL,
+  `expires_at` DATETIME NOT NULL,
+  `start_date` DATETIME NOT NULL,
   `company_id` INT NOT NULL,
   `job_id` INT NOT NULL,
   `title` TEXT,
