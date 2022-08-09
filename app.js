@@ -20,15 +20,14 @@ const {
   editJobSeeker,
   deleteJobSeeker,
 } = require("./routes/job_seekers");
-const port = 5000;
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "nodeclient",
-  password: "S7R0NGp4ssw0rd!",
-  database: "job_board_demo",
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
 });
 
 // connect to database
@@ -91,6 +90,6 @@ app.use((err, req, res, next) => {
 });
 
 // Set the app to listen on the port
-app.listen(port, () => {
-  console.log(`Server running on port: ${port}`);
+app.listen(process.env.port, () => {
+  console.log(`Server running on port: ${process.env.port}`);
 });
