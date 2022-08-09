@@ -26,8 +26,8 @@ const port = 5000;
 const db = mysql.createConnection({
   host: "localhost",
   user: "nodeclient",
-  password: "123456",
-  database: "job_board",
+  password: "S7R0NGp4ssw0rd!",
+  database: "job_board_demo",
 });
 
 // connect to database
