@@ -9,7 +9,7 @@ function getAllJobs(req, res) {
 }
 
 function getJob(req, res) {
-  let query = `select * from job_ads where id = ?`;
+  let query = `SELECT * FROM job_ads WHERE id = ?`;
 
   let id = req.params.id;
 
@@ -60,8 +60,8 @@ function addJob(newJob, res) {
 }
 
 function editJob(job, res) {
-  let query = `update job_ads
-    set
+  let query = `UPDATE job_ads
+    SET
       expires_at = ?,
       start_date = ?,
       company_id = ?,
@@ -109,7 +109,7 @@ function editJob(job, res) {
 }
 
 function deleteJob(req, res) {
-  let query = `delete from job_ads where id = ?`;
+  let query = `DELETE FROM job_ads WHERE id = ?`;
 
   let id = req.params.id;
 
