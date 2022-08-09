@@ -18,8 +18,7 @@ Run the below commands on your workbench or mysql command line to configure your
 
 ```mysql
 USE mysql;
-DROP USER IF EXISTS 'nodeclient'@'localhost';
-CREATE USER 'nodeclient'@'localhost' IDENTIFIED WITH mysql_native_password BY 'S7R0NGp4ssw0rd!';
+CREATE USER IF NOT EXISTS 'nodeclient'@'localhost' IDENTIFIED WITH mysql_native_password BY 'S7R0NGp4ssw0rd!';
 GRANT ALL PRIVILEGES ON *.* TO 'nodeclient'@'localhost';
 flush privileges;
 ```
