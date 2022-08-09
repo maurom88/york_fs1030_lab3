@@ -173,6 +173,11 @@ COMMIT;
 
 ### Install dependencies and run server
 
-`npm install`
+Rename `.env_example` file to `.env` and updated values if necessary (it is not necessary if the database and user have been created with the scripts above)/
 
-`npm start` or, for nodemon, `npm run dev`
+In the terminal run:
+
+- `npm install` to install dependencies.
+- One of the commands below for running the server:
+    - `npm start` (requires restarting the server manually after each update to the code).
+    - `npm run dev` (restarts the server automatically every time a `.js` file is saved - only to be used in development, not production).
