@@ -2,6 +2,10 @@ import express from 'express';
 
 const router = express.Router();
 
+router.get ("/", (req, res) => {
+  res.send("hello");
+});
+
 router.get("/:id", (req, res) => {
   getJobSeeker(req, res)
 });
