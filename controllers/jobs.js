@@ -22,7 +22,7 @@ export const getJob = (req, res) => {
 
 export const addJob = (newJob, res) => {
     let query = `INSERT INTO job_ads
-        (expires_at, start_date, company_id, job_id, title, \`description\`, location, hourly_pay, yearly_salary)
+        (expires_at, start_date, company_id, title, description, location, hourly_pay, yearly_salary)
         VALUES
         (?, ?, ?, ?, ?, ?, ?, ?, ?);`;
 
@@ -30,7 +30,6 @@ export const addJob = (newJob, res) => {
         expires_at,
         start_date,
         company_id,
-        job_id,
         title,
         description,
         location,
@@ -45,7 +44,6 @@ export const addJob = (newJob, res) => {
             expires_at,
             start_date,
             company_id,
-            job_id,
             title,
             description,
             location,
@@ -65,9 +63,8 @@ export const editJob = (job, res) => {
         expires_at = ?,
         start_date = ?,
         company_id = ?,
-        job_id = ?,
         title = ?,
-        \`description\` =?,
+        description = ?,
         location = ?,
         hourly_pay = ?,
         yearly_salary = ?
@@ -77,7 +74,6 @@ export const editJob = (job, res) => {
         expires_at,
         start_date,
         company_id,
-        job_id,
         title,
         description,
         location,
@@ -93,7 +89,6 @@ export const editJob = (job, res) => {
             expires_at,
             start_date,
             company_id,
-            job_id,
             title,
             description,
             location,

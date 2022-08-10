@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 
 router.post("/", addJobSeeker);
 router.get("/:id", getJobSeeker);
-router.put("/:id", editJobSeeker);
+router.patch("/:id", editJobSeeker);
 router.delete("/:id", deleteJobSeeker);
 
 export default router;
