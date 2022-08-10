@@ -13,7 +13,7 @@ import jobsRoutes from './routes/jobs.js'
 const app = express();
 dotenv.config();
 
-const port = process.env.port || 5000;
+const PORT = process.env.port || 5000;
 
 // configure middleware
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,6 +49,6 @@ db.connect((err) => {
 global.db = db;
 
 // Set the app to listen on the port
-app.listen(port, () => {
-  console.log(`Server running on: http://localhost:${process.env.port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on: http://localhost:${PORT}`);
 });
