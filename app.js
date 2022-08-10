@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import jobSeekersRoutes from './routes/job_seekers.js'
-// import jobsRoutes from './routes/jobs.js'
+import jobsRoutes from './routes/jobs.js'
 
 // const fileUpload = require("express-fileupload");
 // import path from 'path';
@@ -18,17 +18,10 @@ const port = process.env.port || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
 app.use('/job_seekers', jobSeekersRoutes);
+app.use('/jobs', jobsRoutes);
 app.use(cors())
 // app.use(express.static(path.join(__dirname, "public"))); // configure express to use public folder
 // app.use(fileUpload()); // configure fileupload
-
-// const {
-//   getAllJobs,
-//   getJob,
-//   addJob,
-//   editJob,
-//   deleteJob,
-// } = require("./routes/jobs");
 
 // create connection to database
 // the mysql2.createConnection function takes in a configuration object which contains host, user, password and the database name.
@@ -45,26 +38,6 @@ db.connect((err) => {
   console.log("Connected to database");
 });
 global.db = db;
-
-// routes for jobs
-
-// app.get("/jobs", getAllJobs);
-
-// app.get("/jobs/:id", (req, res) => {
-//   getJob(req, res);
-// });
-
-// app.post("/jobs/new", (req, res) => {
-//   addJob(req.body, res);
-// });
-
-// app.put("/jobs/:id", (req, res) => {
-//   editJob(req, res);
-// });
-
-// app.delete("/jobs/:id", (req, res) => {
-//   deleteJob(req, res);
-// });
 
 // Error handler middleware
 app.use((err, req, res, next) => {

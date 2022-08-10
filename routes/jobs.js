@@ -1,5 +1,27 @@
+import express from 'express';
+
+const router = express.Router();
+
+router.get("/", getAllJobs);
+
+router.get("/:id", (req, res) => {
+  getJob(req, res);
+});
+
+router.post("/new", (req, res) => {
+  addJob(req.body, res);
+});
+
+router.put("/:id", (req, res) => {
+  editJob(req, res);
+});
+
+router.delete("/:id", (req, res) => {
+  deleteJob(req, res);
+});
+
 function getAllJobs(req, res) {
-  let query = `select * from job_ads order by published_at desc;`;
+  let query = `SELECT * FROM job_ads ORDER BY published_at DESC;`;
 
   // execute query
   db.query(query, (err, result) => {
@@ -119,10 +141,4 @@ db.query(query, id, (err, result) => {
   });
 }
 
-module.exports = {
-  getAllJobs,
-  getJob,
-  addJob,
-  editJob,
-  deleteJob,
-};
+export default router;
