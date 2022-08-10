@@ -22,7 +22,7 @@ export const getJobSeeker = (req, res) => {
     db.query(query, id, (err, result) => {
         if (err) res.status(500).send(err);
         if (!result[0]) res.send("Job seeker bot found");
-        else console.log(result);
+        else res.send(result);
     });
 }
 
@@ -42,7 +42,7 @@ export const editJobSeeker = (req, res) => {
     db.query(query, [first_name, last_name, date_of_birth, email, id], (err, result) => {
         if (err) res.status(500).end(err);
         else res.send(result);
-        console.log(result)
+        res.send(result)
     })
 
 }
