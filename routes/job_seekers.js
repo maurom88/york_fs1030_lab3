@@ -1,3 +1,21 @@
+import express from 'express';
+
+const router = express.Router();
+
+router.get("/:id", (req, res) => {
+  getJobSeeker(req, res)
+});
+
+router.post("/", (req, res) => {
+  addJobSeeker(req, res)
+});
+
+router.put("/:id", (req, res) => {
+  editJobSeeker(req, res)
+});
+
+router.delete("/:id", deleteJobSeeker);
+
 function getJobSeeker(req, res) {
   let query = `SELECT * FROM job_seekers WHERE id = ?`;
 
@@ -58,9 +76,4 @@ db.query(query, id, (err, result) => {
   });
 }
 
-module.exports = {
-  getJobSeeker,
-  addJobSeeker,
-  editJobSeeker,
-  deleteJobSeeker,
-};
+export default router;
