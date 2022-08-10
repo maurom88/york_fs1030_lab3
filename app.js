@@ -1,5 +1,5 @@
 import express from 'express';
-// import bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 import mysql2 from 'mysql2';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -17,7 +17,7 @@ const PORT = process.env.port || 5000;
 
 // configure middleware
 // app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json()); // parse form data client
+app.use(bodyParser.json()); // parse form data client
 app.use(cors())
 app.use('/job_seekers', jobSeekersRoutes);
 app.use('/jobs', jobsRoutes);
