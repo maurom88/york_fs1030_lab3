@@ -24,7 +24,7 @@ export const addJob = (newJob, res) => {
     let query = `INSERT INTO job_ads
         (expires_at, start_date, company_id, title, description, location, hourly_pay, yearly_salary)
         VALUES
-        (?, ?, ?, ?, ?, ?, ?, ?, ?);`;
+        (?, ?, ?, ?, ?, ?, ?, ?);`;
 
     let {
         expires_at,
