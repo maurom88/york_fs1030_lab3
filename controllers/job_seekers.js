@@ -68,7 +68,6 @@ export const imgUpload = (req, res) => {
         return res.status(400).send('No files were uploaded.');
     }
 
-    console.log(req.files);
     uploadedFile = req.files.uploadedFile;
     uploadPath = `public/uploads/${uuid4()}_${uploadedFile.name}`
 
