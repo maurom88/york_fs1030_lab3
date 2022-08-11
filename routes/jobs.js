@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllJobs, addJob, getJob, editJob, deleteJob } from '../controllers/jobs.js';
+import { getAllJobs, addJob, getJob, editJob, deleteJob, imgUpload } from '../controllers/jobs.js';
 
 const router = express.Router();
 
@@ -8,5 +8,6 @@ router.post("/", addJob);
 router.get("/:id", getJob);
 router.put("/:id", editJob);
 router.delete("/:id", deleteJob);
+router.post("/imgUpload", imgUpload)
 
 export default router;

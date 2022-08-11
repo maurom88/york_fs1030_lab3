@@ -114,3 +114,24 @@ export const deleteJob = (req, res) => {
         else res.send(result);
     });
 }
+
+export const imgUpload = (req, res) => {
+    let uploadedFile;
+    let uploadPath;
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        console.log(req.files)
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    console.log(req.files);
+    uploadedFile = req.files.uploadedFile;
+    uploadPath = `public/uploads/${uuid4()}_${uploadedFile.name}`
+
+    uploadedFile.mv(uploadPath, err => {
+        if (err) {
+            return res.status(500).send(`Move error: ${err}`);
+        }
+        res.json({ "File name": uploadedFile.name, "Upload path": uploadPath })
+    })
+}
