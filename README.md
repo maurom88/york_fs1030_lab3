@@ -2,10 +2,13 @@
 
 Node server for a job board app.
 
-Based on:
-
-- Atauba Prince: https://dev.to/achowba/build-a-simple-app-using-node-js-and-mysql-19me
+Useful examples and resources:
+ 
+- Build a REST API with Node JS and Express | CRUD API Tutorial - JavaScript Mastery: https://www.youtube.com/watch?v=l8WPWK9mS5M
+- Build a simple app using Node JS and MySQL - Atauba Prince: https://dev.to/achowba/build-a-simple-app-using-node-js-and-mysql-19me
 - Tarun Sharma: https://github.com/tarun27in/FS1030
+- How to read environment variables from Node.js: https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs
+- How to use an ES6 import in Node.js: https://www.geeksforgeeks.org/how-to-use-an-es6-import-in-node-js/
 
 ## Project setup
 
