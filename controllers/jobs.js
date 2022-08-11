@@ -20,7 +20,7 @@ export const getJob = (req, res) => {
     });
 }
 
-export const addJob = (newJob, res) => {
+export const addJob = (req, res) => {
     let query = `INSERT INTO job_ads
         (expires_at, start_date, company_id, title, description, location, hourly_pay, yearly_salary)
         VALUES
@@ -35,7 +35,7 @@ export const addJob = (newJob, res) => {
         location,
         hourly_pay,
         yearly_salary,
-    } = newJob;
+    } = req.body;
 
     // execute query
     db.query(
@@ -51,13 +51,14 @@ export const addJob = (newJob, res) => {
             yearly_salary,
         ],
         (err, result) => {
+            console.log(result)
             if (err) res.send(err);
             res.send(result);
         }
     );
 }
 
-export const editJob = (job, res) => {
+export const editJob = (req, res) => {
     let query = `UPDATE job_ads
       SET
         expires_at = ?,
@@ -79,7 +80,7 @@ export const editJob = (job, res) => {
         location,
         hourly_pay,
         yearly_salary,
-    } = job.body;
+    } = req.body;
 
     let { id } = job.params;
 
