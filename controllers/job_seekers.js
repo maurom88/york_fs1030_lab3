@@ -1,3 +1,5 @@
+import uuid4 from "uuid4";
+
 export const addJobSeeker = (req, res) => {
     let query = `INSERT INTO job_seekers (first_name, last_name, date_of_birth, email) VALUES
     (?, ?, ?, ?)`;
@@ -55,4 +57,24 @@ export const deleteJobSeeker = (req, res) => {
         if (err) res.status(500).end(err);
         else res.send(result);
     });
+}
+
+export const imgUpload = (req, res) => {
+    let uploadedFile;
+    let uploadPath;
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        console.log(req.files)
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    uploadedFile = req.files.uploadedFile;
+    uploadPath = `public/uploads/${uuid4()}_${uploadedFile.name}`
+
+    uploadedFile.mv(uploadPath, err => {
+        if (err) {
+            return res.status(500).send(`Move error: ${err}`);
+        }
+        res.json({ "File name": uploadedFile.name, "Upload path": uploadPath })
+    })
 }

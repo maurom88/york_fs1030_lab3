@@ -3,11 +3,11 @@ import bodyParser from 'body-parser';
 import mysql2 from 'mysql2';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import fileUpload from 'express-fileupload';
 
 import jobSeekersRoutes from './routes/job_seekers.js'
 import jobsRoutes from './routes/jobs.js'
 
-// const fileUpload = require("express-fileupload");
 // import path from 'path';
 
 const app = express();
@@ -18,7 +18,8 @@ const PORT = process.env.port || 5000;
 // configure middleware
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // parse form data client
-app.use(cors())
+app.use(fileUpload());
+app.use(cors());
 app.use('/job_seekers', jobSeekersRoutes);
 app.use('/jobs', jobsRoutes);
 // app.use(express.static(path.join(__dirname, "public"))); // configure express to use public folder

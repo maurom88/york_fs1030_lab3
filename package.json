@@ -24,9 +24,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.7-alpha.1",
+    "express-fileupload": "^1.4.0",
     "mysql2": "^2.3.3",
-    "req-flash": "0.0.3"
+    "req-flash": "0.0.3",
+    "uuid4": "^2.0.3"
   },
   "directories": {
     "example": "examples"
