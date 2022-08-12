@@ -51,7 +51,6 @@ export const addJob = (req, res) => {
             yearly_salary,
         ],
         (err, result) => {
-            console.log(result)
             if (err) res.send(err);
             res.send(result);
         }
@@ -120,17 +119,16 @@ export const imgUpload = (req, res) => {
     let uploadPath;
 
     if (!req.files || Object.keys(req.files).length === 0) {
-        console.log(req.files)
         return res.status(400).send('No files were uploaded.');
     }
 
     uploadedFile = req.files.uploadedFile;
-    uploadPath = `public/uploads/${uuid4()}_${uploadedFile.name}`
+    uploadPath = `public/uploads/jobs/${uuid4()}_${uploadedFile.name}`
 
     uploadedFile.mv(uploadPath, err => {
         if (err) {
             return res.status(500).send(`Move error: ${err}`);
         }
-        res.json({ "File name": uploadedFile.name, "Upload path": uploadPath })
+        res.send({ "File name": uploadedFile.name, "Upload path": uploadPath })
     })
 }
