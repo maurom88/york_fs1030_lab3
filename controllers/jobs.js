@@ -123,12 +123,12 @@ export const imgUpload = (req, res) => {
     }
 
     uploadedFile = req.files.uploadedFile;
-    uploadPath = `public/uploads/${uuid4()}_${uploadedFile.name}`
+    uploadPath = `public/uploads/jobs/${uuid4()}_${uploadedFile.name}`
 
     uploadedFile.mv(uploadPath, err => {
         if (err) {
             return res.status(500).send(`Move error: ${err}`);
         }
-        res.json({ "File name": uploadedFile.name, "Upload path": uploadPath })
+        res.send({ "File name": uploadedFile.name, "Upload path": uploadPath })
     })
 }
