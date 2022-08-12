@@ -8,6 +8,6 @@ router.post("/", addJob);
 router.get("/:id", getJob);
 router.put("/:id", editJob);
 router.delete("/:id", deleteJob);
-router.post("/imgUpload", imgUpload)
+router.post("/upload", imgUpload)
 
 export default router;
