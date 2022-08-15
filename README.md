@@ -20,10 +20,13 @@ Run the below commands on your workbench or mysql command line to configure your
   <summary>Create a new user for node app</summary>
 
 ```mysql
+START TRANSACTION;
 USE mysql;
-CREATE USER IF NOT EXISTS 'nodeclient'@'localhost' IDENTIFIED WITH mysql_native_password BY 'S7R0NGp4ssw0rd!';
-GRANT ALL PRIVILEGES ON *.* TO 'nodeclient'@'localhost';
+DROP USER IF EXISTS jobBoardAdmin;
+CREATE USER 'jobBoardAdmin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'S7R0NGp4ssw0rd!';
+GRANT ALL PRIVILEGES ON *.* TO 'jobBoardAdmin'@'localhost';
 flush privileges;
+COMMIT;
 ```
 </details>
 
